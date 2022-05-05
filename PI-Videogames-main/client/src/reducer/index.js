@@ -8,7 +8,8 @@ const initialState = {
     allVideogames : [],
     videogames: [],
     genres: [],
-    platforms: []
+    platforms: [],
+    datail :[]
 }
 
 
@@ -70,7 +71,7 @@ function reducer (state = initialState, {payload, type}){
         
             return{
                 ...state,
-                videogames: payload 
+               detail: payload 
             }
 
 

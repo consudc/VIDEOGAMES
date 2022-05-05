@@ -69,7 +69,7 @@ console.log(input)
 
   useEffect (()=>{
     dispatch(getGenres());
-  },[dispatch])
+  },[])
 
   useEffect (()=>{
     dispatch(getPlatforms());
@@ -79,15 +79,15 @@ console.log(input)
   function handleSubmit(e){
     e.preventDefault()
     if (Object.values(errors).length > 0) {
-      alert("Please complete the information required");
-    } else if (
-      input.name === "" &&
-      input.description === "" &&
-      input.rating === ""  &&
-      !input.platforms.length &&
-      !input.genres.length
-    ) {
-      alert("Please complete the form");}
+      alert("Please complete the information required");} 
+      //else if (
+    //   input.name === "" &&
+    //   input.description === "" &&
+    //   input.rating === ""  &&
+    //   !input.platforms.length &&
+    //   !input.genres.length
+    // ) {
+    //   alert("Please complete the form");}
     else {
       dispatch(createVideogames(input));
     alert("PERSONAJE CREADO CON EXITO")

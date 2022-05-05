@@ -120,12 +120,9 @@ try{
           
 
 let genresId = await Genre.findAll(
-
-     // {where : 
-     //      { name: {genres}}})
      { where : 
           { name: {
-          [Op.in]: genresId}}} )
+          [Op.in]: genres}}} )
 console.log(genresId)
  
 

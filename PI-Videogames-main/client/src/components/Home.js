@@ -121,10 +121,14 @@ function handleRating (e){
           type= "submit" 
           value ="CREA TUS JUEGOS">
           </input>
-          
           </NavLink>
+  </div>
+
+  <div>
       <button onClick={e=>{handleClick(e)}}> Volver a cargar tus videojuegos</button>
         </div>
+
+
       </div>
 
        <ul>Ordena por nombre:</ul>
@@ -183,7 +187,10 @@ function handleRating (e){
       <div key={el.id}>
       <Link to={"/home/" + el.id}>
     <div className={styles.cards}>
-    <Card name ={el.name} genres= {el.genres} image= {el.image}/> 
+    {/* <NavLink to="/detail" exact>  */}
+    <Card name ={el.name} genres= {el.genres} image= {el.image}
+    /> 
+    {/* </NavLink>  */}
     </div>
     </Link>
     </div>
