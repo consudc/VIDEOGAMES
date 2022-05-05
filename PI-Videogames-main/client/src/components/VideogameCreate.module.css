@@ -1,0 +1,49 @@
+.root{
+    background-image: url = ("https://img.freepik.com/vector-gratis/fondo-transparente-videojuegos_6997-1230.jpg?w=2000");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position:fixed;
+    background-position: 100% 100%;
+}
+
+.h1{
+    color: white
+}
+
+.h1:hover{
+    color: mediumpurple
+}
+
+.btn{
+    background-color:lightsteelblue;
+    color: white; 
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    border-color:aquamarine;
+    cursor: pointer ;
+    
+}
+
+.btn:hover{
+    color:mediumpurple;
+}
+
+/* .form{
+    background-color: dodgerblue;
+}
+ */
+
+.error {
+    color: red;
+    font-size: 10px;
+  }
+  
+.danger {
+    color: red;
+    font-size: 10px;
+    border: 2px solid red;
+  }
+
+

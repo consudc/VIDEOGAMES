@@ -1,0 +1,43 @@
+.nav{
+    list-style: none;
+    display: flex;
+    text-align: center;
+ 
+}
+
+.nav ul{
+    list-style: none;
+    display: flex;
+    text-align: center;
+    background: 100% 100%;
+}
+
+
+.nav li{
+    padding: 10px;
+    border-radius: 5px; 
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
+
+
+.active{
+    color: black;
+    text-decoration: underline;
+
+
+}
+
+
+.button{
+    cursor: pointer; 
+    border-radius: 5px;
+    background-color:lightblue;
+    
+}
+
+.button :hover{
+   color: white;
+}

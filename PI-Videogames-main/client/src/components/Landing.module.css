@@ -1,0 +1,39 @@
+.body{
+
+background-image: url("https://img.freepik.com/vector-gratis/controles-videojuegos-estilo-neon-pared-ladrillo_24908-58916.jpg?w=2000");
+    /* background-color: aquamarine; */
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position:fixed;
+}
+
+.h1{
+text-align: center;
+color: whitesmoke;
+font-size: 40px;
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+cursor: pointer ;
+-webkit-text-stroke: 1.5px black;
+}
+.h1:hover {
+    color:mediumpurple;
+}
+.btn{
+    background-color:lightsteelblue;
+    color: white; 
+    width: 5vw;
+    height: 5vh;
+    border-radius: 5px;
+    border-color:aquamarine;
+    cursor: pointer ;
+}
+
+.btn:hover{
+    color:mediumpurple;
+}
+
+
+
+
+
