@@ -9,7 +9,7 @@ const initialState = {
     videogames: [],
     genres: [],
     platforms: [],
-    datail :[]
+    detail :[]
 }
 
 
@@ -64,7 +64,7 @@ function reducer (state = initialState, {payload, type}){
  
        return{
             ...state,
-            videogames: payload
+           videogames: payload
         }
 
     case GET_GAME_DETAIL :
@@ -75,7 +75,6 @@ function reducer (state = initialState, {payload, type}){
             }
 
 
-        //EL PAYLOAD ES LO QUE TE TRAE LA INFO FILTRADA POR NAME
 
     case CREATE_VIDEOGAMES :
             return{

@@ -67,7 +67,7 @@ const resultFinalApi = resultApi.map((el)=>{
                ]
      })
      
-     const infoTotal = resultFinalApi.concat(videogamesDb)
+     const infoTotal = videogamesDb.concat(resultFinalApi)
 
      
         if (name){
@@ -110,7 +110,7 @@ try{
      
               const newGame =  await Videogame.create({
                     name,
-                    image : image? image :"https://img.freepik.com/vector-gratis/consola-juegos-letras-letrero-neon-fondo-ladrillo_1262-11854.jpg",
+                    image: image? image :"https://img.freepik.com/vector-gratis/consola-juegos-letras-letrero-neon-fondo-ladrillo_1262-11854.jpg",
                     description,
                     rating,
                     createdInDb,
@@ -160,8 +160,7 @@ const getApiId = async (id) => {
         genres : dataUrl.genres.map(el=> el.name),
 
      }
-     
-     
+
      //console.log( detailId)
 
      // const descriptionId = await apiId.data.description
@@ -184,12 +183,17 @@ const videoGameApi = await getApiId(id);
 
 if (id.includes("-")) {
 
-const videoGameDb = await Videogame.findAll({id},
+const videoGameDb = await Videogame.findByPk(id,
+//const videoGameDb = await Videogame.findAll({id},
       {
           include :[{
               model : Genre,
+
+              attributes : ["name"],
+                   through: {
+                       attributes : [],}
          },
- 
+
      ]
      }
          )

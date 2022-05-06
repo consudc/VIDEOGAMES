@@ -69,7 +69,7 @@ console.log(input)
 
   useEffect (()=>{
     dispatch(getGenres());
-  },[])
+  },[dispatch])
 
   useEffect (()=>{
     dispatch(getPlatforms());

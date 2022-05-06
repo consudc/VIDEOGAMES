@@ -95,16 +95,17 @@ export function getVideogameName(name){
      
         } catch(error){ 
             console.log(error)
+            alert("VIDEOGAME NO ENCONTRADO!")
         }
 }
 
 }
-export function getDatailVideogame(id){
+export function getDetailVideogame(id){
     return async function (dispatch){
         try{
-        var json = await axios.get(`http://localhost:3001/videogame/:${id}`);
+        var json = await axios.get(`http://localhost:3001/videogame/${id}`);
 
-        // console.log(json.data)
+       console.log(json.data)
         
             return dispatch({
             type : GET_GAME_DETAIL,

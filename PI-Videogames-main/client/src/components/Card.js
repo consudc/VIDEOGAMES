@@ -9,16 +9,19 @@ function Card({image, name, genres}) {
    
     <div className={styles.cardBody}>
       <h1 className={styles.name}>{name}</h1>
-      {/* <h3 className={styles.genre}>{genres}
-  
-     </h3> */}
-     {/* <NavLink to="/detail" exact> */}
-       <h3 className={styles.genre}>{genres.map(t =>( 
-        <p key={t}> {t}</p> 
+      {/* <h3 className={styles.name}>{genres}</h3> */}
+ 
+
+       {/* <h3 className={styles.genre}>{genres.map((t,index) =>( 
+        <p key={index}> {t.name}</p> 
         ))}
-      </h3>
-      {/* </NavLink> */}
-      {/* <h3>{genres.map(t=> t.name)}</h3> */}
+      </h3>  */}
+
+<h3 className={styles.genre}>{genres.map((t,index) =>( 
+        <p key={index}> {t}</p> 
+        ))}
+      </h3> 
+
       <img src={image} alt="img not found" width= "80px" height="80px" />
       
 
