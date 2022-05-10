@@ -1,0 +1,107 @@
+.body{
+    display: grid;
+    grid-template-rows: repeat(8 fr);
+}
+
+
+
+.nombre{
+        font-weight: bold;  
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 30px;
+        cursor: pointer ;
+        height: 17px;
+    
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        
+        /* -webkit-text-stroke: 1.5px black; */
+        color: #fff;
+            margin-top: 1%; 
+            text-shadow:
+                0 0 5px rgba(0,178,255,1),
+                0 0 10px rgba(0,178,255,1),
+                /* 0 0 20px rgba(0,178,255,1),
+                0 0 40px rgba(38,104,127,1), */
+                /* 0 0 80px rgba(38,104,127,1),
+                0 0 90px rgba(38,104,127,1), */
+                /* 0 0 100px rgba(38,104,127,1), */
+                0 0 140px rgba(38,104,127,1),
+                0 0 180px rgba(38,104,127,1);
+        
+        }
+        .h1:hover {
+            color:rgb(219, 238, 241)
+        }
+        
+
+.button{
+
+    color: #fff;
+   
+    /* margin-top: 5px;  */
+    margin-bottom: 15px;
+    text-shadow:
+        0 0 5px rgb(255, 0, 242),
+        0 0 10px rgb(255, 0, 242),
+        0 0 20px rgb(255, 0, 242),
+        0 0 40px rgb(238, 0, 255),
+        0 0 80px rgb(238, 0, 255),
+        0 0 90px rgb(238, 0, 255),
+        0 0 100px rgb(238, 0, 255),
+        0 0 140px rgb(238, 0, 255),
+        0 0 180px rgb(238, 0, 255);
+   
+     background-color:rgb(43, 3, 43);
+    /* color:rgb(103, 46, 127);  */
+    font-size: 15px;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1.8px solid ;
+
+    /* border-style: double; */
+    cursor: pointer ;
+}
+
+
+.btn:hover{
+    color: rgb(214, 181, 214);
+}
+
+.p{
+    font-size: 13px;
+    text-align: center;
+  
+    /* border: 0.1px solid;  */
+    margin-left: 15%;
+    margin-right: -15%; 
+    margin-top: 1%;
+    
+    
+} 
+
+.parrafo{
+text-align: center;
+height: 180px;
+width: 1100px;
+margin-top: 1%;
+margin-bottom: 1.5%;
+
+}
+
+.label{
+    font-size: 10px;
+    margin-top:1px ;
+    margin-bottom: 1px;
+    height: 20px;
+} 
+
+.parr{
+    font-size: 13px;
+    text-align: center;
+    height: 20px;
+  
+} 
+
+

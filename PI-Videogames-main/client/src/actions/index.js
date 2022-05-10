@@ -90,12 +90,13 @@ export function getVideogameName(name){
 
         return dispatch({
             type : GET_GAME_BYNAME,
-            payload : json.data
+            payload : json.data 
         })
      
         } catch(error){ 
-            console.log(error)
-            alert("VIDEOGAME NO ENCONTRADO!")
+            
+            alert("no se encuentra el videogame")
+            // console.log(error)
         }
 }
 

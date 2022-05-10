@@ -46,7 +46,7 @@ const  handleClickNext = () =>{
   return (
     <nav className={styles.nav} >
         <ul >
-        <button className= {styles.button} onClick={handleClickPrev}>Prev</button>    
+        <button className= {styles.button} onClick={handleClickPrev}>{"<<"}</button>    
             { pageNumber &&
             pageNumber.map(number => (    
                 <li key={number}
@@ -56,7 +56,7 @@ const  handleClickNext = () =>{
                 </li>
                 ))
             }
-          <button className= {styles.button} onClick={handleClickNext}>Next</button>    
+          <button className= {styles.button} onClick={handleClickNext}>{">>"}</button>    
         </ul>
     </nav>
   )

@@ -64,7 +64,7 @@ function reducer (state = initialState, {payload, type}){
  
        return{
             ...state,
-           videogames: payload
+           videogames:payload
         }
 
     case GET_GAME_DETAIL :

@@ -26,26 +26,40 @@ console.log(allDetail)
 
 
   return (
-    <div>{
+    <div className={styles.body}>{
       allDetail?
 <div> 
 
-<h1 className="name">{allDetail.name ? allDetail.name : "Nombre no encontrado"}</h1>
+<h1 className={styles.nombre}>{allDetail.name ? allDetail.name : "Nombre no encontrado"}</h1>
 <img className="image"
-        height="300px"
-        width="300px"
+        height="170px"
+        width="330px"
         src={allDetail.image ? allDetail.image : "Imagen no encontrada"}
       />
-<p>Descripción : {allDetail.description? allDetail.description: "Descripción no encontrada"}</p>
-<label  className="genres-label" >Genres: </label>
-      <h3 className="genres">
-        
-        {allDetail.genres ? allDetail.genres.map(e => e.name + (' /')) : "Generos no encontrados"}
-      </h3>
-  
-<h1>Plataforma/s : {allDetail.platforms ? allDetail.platforms + "/ " : "Plataformas no encontradas"}</h1>
-<h1>Fecha : {allDetail.released? allDetail.released : "Fecha no encontrada "}</h1>
-<h1>Rating : {allDetail.rating ? allDetail.rating: allDetail.rating}</h1> 
+<div className={styles.label}>
+<h3>DESCRIPCIÓN</h3>
+</div>
+<div className={styles.parrafo}>
+<p className={styles.p}>{allDetail.description? allDetail.description: "Descripción no encontrada"}</p>
+</div>
+<div className={styles.label} >
+<h3 >GENEROS</h3>
+</div>
+      <p className={styles.parr}>
+        {allDetail.createdInDb === true? allDetail.genres.map((el)=> el.name + "/ "): allDetail.genres + "/ " }
+      </p>
+<div className={styles.label}>
+<h3>PLATAFORMA/S</h3>
+</div> 
+<p className={styles.parr}>{allDetail.platforms ? allDetail.platforms + "/ " : "Plataformas no encontradas"}</p>
+<div className={styles.label}>
+<h3>FECHA</h3>
+</div> 
+<p className={styles.parr}>{allDetail.released? allDetail.released : "Fecha no encontrada "}</p>
+<div className={styles.label}>
+<h3>RATING</h3>
+</div> 
+<p className={styles.parr}>{allDetail.rating ? allDetail.rating: allDetail.rating}</p> 
 
 </div>  : 
 <h1>Loading..</h1>
@@ -53,7 +67,7 @@ console.log(allDetail)
 }
 
 <NavLink to="/home" exact>
-  <button>Volver</button>
+  <button className={styles.button}>HOME</button>
 </NavLink>
       
       

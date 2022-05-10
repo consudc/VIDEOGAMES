@@ -7,9 +7,13 @@ function Landing() {
   return (
     <div className={styles.body}>
       <h1 className={styles.h1}>BIENVENIDOS A HENRY VIDEOGAMES</h1>
+      <div className={styles.button}>
       <NavLink to="/home" exact>
-      <button className={styles.btn}>START</button>
+     
+      <button className={styles.btn}>PLAY</button>
+      
       </NavLink>
+      </div>
     </div>
   )
 }

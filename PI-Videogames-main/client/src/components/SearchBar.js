@@ -3,6 +3,8 @@ import {getVideogameName} from "../actions/index"
 import { useDispatch} from 'react-redux';
 import {useState} from "react"
 
+import style from "./SearchBar.module.css"
+
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -28,13 +30,15 @@ function handleClick(e){
     <div>
     <form onSubmit={(e)=>handleClick(e)} >
     <input
+    className={style.search}
     type="text"
-    placeholder="Search.."
+    placeholder="SEARCH.."
     onChange={(e)=>handleChange(e)}
     value={name}
-    label= "Busca tus juegos: "
+    // label= "Busca tus juegos: "
     />
     <input
+    className={style.boton}
        type= "submit" 
        value ="BUSCAR"
       // onClick={(e)=>handleClick(e)}

@@ -45,8 +45,9 @@ const indexFirstVideogame = indexLastVideogame - gamesPerPage //==> en el primer
 
 
 const currentGamesPage = 
+
 allGames.length >0? allGames.slice(indexFirstVideogame,indexLastVideogame) : allGames
-// console.log(currentGamesPage)
+console.log(currentGamesPage)
 
 // //aca ejecuto el setCurrentPage => set State
 const paginado = (pageNumber) =>{
@@ -104,60 +105,78 @@ function handleRating (e){
   setOrder(e.target.value)
 }
 
-
   return (
     <div className={styles.body}>
-    <div className={styles.contenedor}>
+    <div className={styles.header}>
     <div>
     <NavLink to="/" exact>
     <button className={styles.btn}>
-        INICIO
+        {"<< BACK"}
       </button>
       </NavLink>
     </div>
-    <div className={styles.botones} >
-        <NavLink to = "/videogames" exact>
-          <input
+    <div  >
+        <NavLink  to = "/videogames" exact>
+          <input 
+          className={styles.btnInput}
+          
           type= "submit" 
           value ="CREA TUS JUEGOS">
           </input>
           </NavLink>
   </div>
 
-  <SearchBar/>
+
 
   <div>
-      <button onClick={e=>{handleClick(e)}}> Volver a cargar tus videojuegos</button>
+      <button className={styles.btnInput} onClick={e=>{handleClick(e)}}> TODOS TUS JUEGOS</button>
         </div>
+
+        <SearchBar/>
 
 
       </div>
-
-       <ul>Ordena por nombre:</ul>
-        <select onChange={e=>handleOrder(e)}>
+<div className={styles.filtros}>
+  
+       <ul>
+       <p className={styles.p}>Ordena por nombre </p>
+        <select className= {styles.select} onChange={e=>handleOrder(e)}>
         <option value= "" disabled={true}>Orden</option> 
           <option value="asc">A-Z</option>
           <option value= "desc">Z-A</option>
           </select>
-<div>
-        <ul>Ordena por rating:</ul>
-        <select onChange={e=>handleRating(e)}>
-        <option value="all" disabled={true} >Rating</option>
-          <option value="ascR">0-5</option>
-           <option value= "descR">5-0</option>
+          </ul>
+
+
+   <ul>
+   <p className={styles.p}>Ordena por rating </p>
+  <select className= {styles.select} onChange={e=>handleRating(e)}>
+  <option value="all" disabled={true} >Rating</option>
+  <option value="ascR">0-5</option>
+  <option value= "descR">5-0</option>
         </select>
-        </div>
+        </ul>
+ 
 
       {/* cuando hacemos tanto un ordenamiento como un firltrado usamos el select y en option ponemos cada una de los valores a seleccionar y con su value que nos sirve para apuntar que es lo que queremos */}
-          <select onChange={e=>handleFilterCreated(e)}> 
-          <option value= "all">Todos</option>
+      <ul>
+        
+        <p className={styles.p}>Filtro creado/existente </p>
+         
+          <select className= {styles.select} onChange={e=>handleFilterCreated(e)}> 
+          <option value= "all" disabled={true} >Todos</option>
           <option value= "exis">Existente</option>
           <option value= "creado">Nuevo</option>
           </select>
+        </ul>
 
-          <select onChange={e=>handleFilterGenres(e)}> 
+        <ul>
+        
+        <p className={styles.p}>Filtro por Genero </p>
 
-          <option value= "">Generos</option>
+          <select className= {styles.select} onChange={e=>handleFilterGenres(e)}> 
+
+          <option value= "" disabled={true}>Generos</option>
           
           {allGenres.map((g)=>(
           <option key ={g.id} value={g.name} label={g.name} >
@@ -165,8 +184,10 @@ function handleRating (e){
           </option>))}
           
           </select>
+
+        </ul>
  
- 
+</div> 
   
   {/* le pagamos al componente Paginado por Props  */}
   <Paginado
@@ -182,39 +203,38 @@ function handleRating (e){
  
  
 {/* aca no vas a hacer el mapeo de allGames=> sino de la porcion de pokemons por pagina */}
- 
- {currentGamesPage.length >0 ?
+<div className={styles.contenedor}>
+ {currentGamesPage.length?
  currentGamesPage.map((el) =>{
-    return(                     
-      <div key={el.id}>
-      <Link to={"/home/" + el.id}>
-    <div className={styles.cards}>
-   <Card name ={el.name} 
-   genres= {el.createdInDb? el.genres.map((g)=>g.name) : el.genres} 
-    image= {el.image}
+    return(  
+    <div key = {el.id}>                   
+      <Link className={styles.link} to={"/home/" + el.id}>
+    <div >
+   <Card
+  //  key={el.id}
+   className= {styles.cards}
+   name ={el.name} 
+   genres= {el.createdInDb? el.genres.map((g)=> g.name) : el.genres} 
+   image= {el.image}
     /> 
-   
-    {/* <Card name ={el.name} genres= {el.genres} 
-    image= {el.image}
-    />  */}
-   
     </div>
     </Link>
     </div>
   )}) 
   
   :  
-  
-<img src={"https://c.tenor.com/1qrYT711uEoAAAAM/cargando.gif"} alt="GAME NOT FOUND"></img>
-  
 
 
-//<img className={styles.img} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEX19vcdHhwAAAD////7/P35+vsCBQCWl5i8vL0LDQsVFxWAgIFMTExaW1qOj48TFRJ+f3/w8PHb3N1gYGAvLy6jpKTMzM2ys7OampuHiIhoaWlubm7n6OnV1dYFCADDw8R3d3chIiDi4uOtrq49PTxDREOhoaEyMzFHR0fOrsDKAAAC7UlEQVR4nO3a63KiMBiAYfiSaMAD4gFF8Wzt3v8VbkDacWbVuj9SpH2fmZaWZjq8QxuT0iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAF4y5HLTW5vpYuXwQfHx09fX2SLOscAdjZ7NjpgNTzGezeWrMOnMO7kSWjc3BDTJupBtYjhvrpq/6P5ixyNYE+iSloT5URynUoDqejIplp84iZ+1GGj2tTtsW3cWyMDOmkLg/nMZTNZNotEvkqCbJdPUWy1ZNOz13NlkqF+8qk8EwjHYtuol1Yfle5ZtELSRWSjoLNekMVCEyrwtDqQozkbFaybLVhXulpdOtCtPrwvFn4UQmrS4M7xQe68K1Hru5p+nrft6zhftoWdSFRqsW3cKnC3dJ9FGoz5NhixKfLRytZFsXqlHLZ5o79/AoeVQX9lpeuC9fLf4pXB3kFP+Mwk4oEt4oVJs4/BmFEp5O8a3CVRTWr4dlYbUWv357WZc2dfuntLguPMpHYS5uCZetTZFll+V4lqVNd9znCpPlLi8kmczek+nVTBO954Pkc126cos2V7h2o4/9zVJ15U1ZEbUWSYPyRbLpkLvKeyhuLXrZM+TuysUVyrDeW+wDFVZ7i6V2mwy3twir05MWFQap3To6PS66Z6vN2G6NsXass/K0u3CztWt31v2urrc2MOl80V3MMu3O6IO1prDW7Rlt0XTGI/VeXl/27vUMYm7s8S+f6svA9sw0ALwz+lV4moyM7b6KrZ9E3ZPOaxBPm2adR2EcNS92uxVvhXE/7zXuT+yx0C2im55ktOpFXgvLb628e3gZI++FaX/gWf/RVPkdhZJ4Jo8CvqUw9IxCCimkkEIKKaSQQgoppJBCCimkkEIKf0vhxrPGC/OhZ3nDfxEO/D+beHgZfgsX/p9ZfCn3WRi+95s39fn8MAzj5oX+CkfyKjw95TZr+yp8/W+feR1+AgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgV/kLd3CPUalqWowAAAAASUVORK5CYII="/>
+<div className={styles.img}>
 
-  // <div className={styles.img}
-  
-  // </div>
+<img src={"https://i.imgur.com/llF5iyg.gif?noredirect"} alt="GAME NOT FOUND" width= "200px" height="200px" ></img>
+
+</div>
+
+ 
  } 
+</div>
+
 
     </div>
   )

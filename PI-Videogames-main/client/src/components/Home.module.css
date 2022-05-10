@@ -1,10 +1,18 @@
 .body{
-    background-image: url("https://previews.123rf.com/images/nightblossom66/nightblossom661403/nightblossom66140300001/26903984-vector-de-fondo-con-un-tema-de-los-videojuegos-no-es-un-patr%C3%B3n.jpg");
+    background-image: url("../GIFS/fondogamer.png");
+    /* background-image: url("https://previews.123rf.com/images/nightblossom66/nightblossom661403/nightblossom66140300001/26903984-vector-de-fondo-con-un-tema-de-los-videojuegos-no-es-un-patr%C3%B3n.jpg"); */
     background-size: cover;
     width: 100vw;
     height: 100vh;
     position:fixed;
     background-position: 100% 100%
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 15% 25% 25% 35%;
+    margin-top: 5px;
+
 }
 
 
@@ -16,45 +24,120 @@
     cursor: pointer ;
     -webkit-text-stroke: 1.5px black;
 }
-
-.btn{
-    background-color:lightsteelblue;
-    color: white; 
-    width: 5vw;
-    height: 5vh;
-    border-radius: 5px;
-    border-color:aquamarine;
-    cursor: pointer ;
-    
-}
-
-.btn:hover{
-    color:mediumpurple;
-}
-
-.input{
-    text-decoration: underline ;
-    cursor: pointer ;
-    background-color:lavender;
+.p{
+    font-size: 15px;
 }
 
 .img{
         width: 150px;
-        height: 150px
-      
+        height: 150px;    
       }
+.btn{
+        color: #fff;
+        
+        margin-top: 0.5%; 
+        text-shadow:
+            0 0 5px rgb(187, 0, 255),
+            0 0 10px rgb(187, 0, 255),
+            /* 0 0 20px rgb(255, 0, 242), */
+            /* 0 0 40px rgb(238, 0, 255),
+            0 0 80px rgb(238, 0, 255),
+            0 0 90px rgb(238, 0, 255), */
+            0 0 100px rgb(238, 0, 255),
+            0 0 140px rgb(238, 0, 255),
+            0 0 180px rgb(238, 0, 255);
+       
+         background-color:rgb(93, 42, 132);
+        /* color:rgb(103, 46, 127);  */
+        font-size: 13px;
+        width: 90px;
+        height: 40px;
+        border-radius: 10px;
+        border: 1.8px solid ;
+    
+        /* border-style: double; */
+        cursor: pointer ;
+    }
+    
+    
+    .btn:hover{
+        color: rgb(214, 181, 214);
+    }
 
-.botones {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    height: 20px;
-    margin-top: 10px;
+.btnInput{
+    color: #fff;
+        
+    margin-top: 0.5%; 
+    text-shadow:
+        0 0 5px rgb(255, 0, 242),
+        0 0 10px rgb(255, 0, 242),
+        0 0 20px rgb(255, 0, 242),
+        0 0 40px rgb(238, 0, 255),
+        0 0 80px rgb(238, 0, 255),
+        0 0 90px rgb(238, 0, 255),
+        0 0 100px rgb(238, 0, 255),
+        0 0 140px rgb(238, 0, 255),
+        0 0 180px rgb(238, 0, 255);
+   
+     background-color:rgb(43, 3, 43);
+    /* color:rgb(103, 46, 127);  */
+    font-size: 15px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1.8px solid ;
+
+    /* border-style: double; */
+    cursor: pointer ;
+}
+
+
+.btn:hover{
+    color: rgb(214, 181, 214);
+}
+
+.select{
+    font-size: 15px;
+    border-radius: 5px;
+    height: 25px;
+    margin-top: 1px;
+
+}
     
+
+
+.contenedor{
+    /* background-color: aliceblue;
+    width:100%  */
     
-  }
-.cards{
-    grid-area:auto;
+    display: grid;
+    
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows:repeat(3, 1fr) ;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin-left: 50px;
+    /* margin-right: 50%; */
+   
+}
+.img{
+    margin-left: 200%;
+
+    margin-top: 26%;
+
+
+}
+
+.filtros{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+    height: 100px;
+
+    /* margin-top: 5px; */   
+}
+.link{
+    text-decoration: none;
 }
 
 

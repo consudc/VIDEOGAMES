@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const divStyle = {
-  backgroundImage: `url("https://img.freepik.com/vector-gratis/fondo-transparente-videojuegos_6997-1230.jpg?w=2000")`,
+  backgroundImage: `url(https://i0.wp.com/wallpapersfortech.com/wp-content/uploads/2021/07/Gaming-PC-Wallpaper-HD.png?fit=3840%2C2160&ssl=1)`,
   backgroundSize: "cover",
   position:"fixed",
   backgroundPosition: "100% 100%",
@@ -32,7 +32,7 @@ function validate (input){
     errors.genres = "Se requiere al menos un genero"
   }
   else if (input.rating > 5 || input.rating <= 0) {
-    errors.rating = "Required value between 1 and 5";}
+    errors.rating = "Se requiere un valor entre 0 y 5";}
   return errors
 }
 
@@ -148,30 +148,39 @@ function handleDelete(el){
 
   return (
     <div style={divStyle}>
-   {/* <div className={styles.root}>  */}
+
 
   <NavLink to = "/home" exact >
       <button className={styles.btn}>
         HOME
       </button>
   </NavLink>
+  
   <h1 className={styles.h1}> CREA TU VIDEOJUEGO</h1>
+  <form className = {styles.form} onSubmit={(e) => handleSubmit(e)}>
 
-  <form className = {styles.form}  onSubmit={(e) => handleSubmit(e)}>
 <div>
-  <label>Nombre: </label>
-<input
+<div className={styles.input} >
+  <div>
+  <label>NOMBRE *: </label>
+  </div>
 
+<input
 className={errors.name && styles.danger}
   type= "text"
   name= "name"
   value={input.name}
   onChange={handleChange}
   />
+<div>
  {!errors.name ? null : <div className={styles.error}>{errors.name}</div>}
  </div>
+ </div>
+
+<div className={styles.input}>
 <div>
-  <label> Descripción: </label>
+  <label>DESCRIPCIÓN *: </label>
+  </div>
   <input
     className={errors.description && styles.danger}
     type="text"
@@ -179,11 +188,14 @@ className={errors.name && styles.danger}
     value={input.description}
     onChange={handleChange}
     />
-   {!errors.description ? null : <p className={styles.error}>{errors.description}</p>}
-
+    <div>
+   {!errors.description ? null : <div className={styles.error}>{errors.description}</div>}
+   </div>
   </div>
-  <div>
-  <label>Fecha de lanzamiento:</label>
+  <div className={styles.input}>
+  <div className={styles.label}>
+  <label>FECHA LANZAMIENTO: </label>
+  </div>
   <input type="text"
     name="released"
     value={input.released}
@@ -191,9 +203,10 @@ className={errors.name && styles.danger}
     />
 
   </div>
+  <div className={styles.input}>
   <div>
-  <label>
-    Rating:</label>
+  <label>RATING: </label>
+  </div>
     <input type="text"
     name="rating"
     value={input.rating}
@@ -201,25 +214,30 @@ className={errors.name && styles.danger}
 
 {!errors.rating? null : <div className={styles.error}>{errors.rating}</div>}
   </div>
+  <div className={styles.input}>
   <div>
-  <label>
-    Imagen:</label>
+  <label>IMAGEN: </label>
+  </div>
     <input type="text"
     name="image"
     value={input.image}
     onChange={handleChange} />
   </div>
 
+<div className={styles.input}>
 <div>
-Elige Genero/s:
-  <select onChange={handleSelectGenre}>
+  <label>GENERO/S *: </label>
+  </div>
+  <select className={styles.select} onChange={handleSelectGenre}>
             <option value="" disabled={true} className={errors.genres && styles.danger}>Genres</option>
 
             {allGenres.map((t)=>(
               <option key={t.id} value={t.name}>{t.name}</option>
                ))}
   </select>
+  <div>
   {!errors.genres ? null : <div className={styles.error}>{errors.genres}</div>}
+  </div>
   </div>
 
   {input.genres.map((el, index) => (
@@ -230,11 +248,13 @@ Elige Genero/s:
           ))}
 
 
-<div>
-
-Elige Plataforma/s:
-   <select onChange={handleSelectPlatform}>
-    <option value="">Platforms</option>
+<div className={styles.input}>
+<div >
+  <label>PLATAFORMA/S *: </label>
+  </div>
+   <select className={styles.select}
+   onChange={handleSelectPlatform}>
+    <option value="" disabled={true} >Platforms</option>
       {platformsList.map((t, index)=>(
 
 <option key={index} value={t}>{t}</option>
@@ -251,16 +271,16 @@ Elige Plataforma/s:
           ))}
 {!errors.platforms ? null : <p className={styles.error}>{errors.platforms}</p>}
 
-<div className={styles.crear}>
-   <input type="submit" value="Crear" 
+</div>
+<div >
+   <input className={styles.crear} type="submit" value="CREAR" 
    disabled={!!errors.genres || !!errors.platforms}
    ></input>
    </div>
   </form>
 
+  </div>
 
-
-</div>
   )
 }
 

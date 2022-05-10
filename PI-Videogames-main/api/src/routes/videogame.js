@@ -49,7 +49,6 @@ const resultFinalApi = resultApi.map((el)=>{
           rating: el.rating,
           released: el.released,
           genres : el.genres.map(el=> el.name),
-          
           }
     
      })
@@ -78,8 +77,8 @@ const resultFinalApi = resultApi.map((el)=>{
            let resultName = videogameName.slice(0, 15);
 
      resultName.length? res.status(200).send(resultName):
-
-          res.json({ Error: "No se encontró el Videogame"})
+     
+     res.status(404).send({Error:"No se encontro el videojuegos"})
  
 }
 
@@ -88,7 +87,6 @@ const resultFinalApi = resultApi.map((el)=>{
   
 }   catch(error){
      next(error)}
-
 })
 
 
@@ -110,7 +108,7 @@ try{
      
               const newGame =  await Videogame.create({
                     name,
-                    image: image? image :"https://img.freepik.com/vector-gratis/consola-juegos-letras-letrero-neon-fondo-ladrillo_1262-11854.jpg",
+                    image: image? image :"https://st4.depositphotos.com/18984178/30114/i/450/depositphotos_301143034-stock-photo-retro-3d-render-banner-with.jpg",
                     description,
                     rating,
                     createdInDb,
@@ -124,10 +122,7 @@ let genresId = await Genre.findAll(
           { name: {
           [Op.in]: genres}}} )
 console.log(genresId)
- 
 
-
- 
 newGame.addGenre(genresId)
 
 res.status(200).json({msg: "VideoGame creado con exito"})
