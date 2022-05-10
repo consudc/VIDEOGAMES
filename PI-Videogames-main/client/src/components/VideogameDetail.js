@@ -15,15 +15,13 @@ function VideogameDetail(props) {
 
 const allDetail = useSelector((state)=> state.detail)
 
-console.log(allDetail)
+
  
   useEffect (()=>{  
-
     //esto es para acceder a los params(id) de la ruta
     dispatch(getDetailVideogame(props.match.params.id));
   },[dispatch])
   
-
 
   return (
     <div className={styles.body}>{
@@ -34,6 +32,7 @@ console.log(allDetail)
 <img className="image"
         height="170px"
         width="330px"
+        alt={"img not found"}
         src={allDetail.image ? allDetail.image : "Imagen no encontrada"}
       />
 <div className={styles.label}>

@@ -110,19 +110,19 @@
     /* background-color: aliceblue;
     width:100%  */
     
-    display: grid;
-    
+    display: grid;  
     grid-template-columns: repeat(5,1fr);
     grid-template-rows:repeat(3, 1fr) ;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    margin-left: 50px;
-    /* margin-right: 50%; */
+    grid-column-gap:10px;
+    grid-row-gap: 5px;
+    margin-left: 10px; 
+    margin-right: 10px; 
+    margin-bottom: 2%;
+    
    
 }
 .img{
     margin-left: 200%;
-
     margin-top: 26%;
 
 

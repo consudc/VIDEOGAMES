@@ -1,19 +1,22 @@
 
 .card { 
-    width: 220px;
+    width: 270px;
     height: 170px;
     margin-bottom: 5px;
     margin-top: 5px;
     /* margin-left: 15px; */
     /* margin-right: 5px; */
-    background-color:lavender;
+    background-color:rgb(163, 163, 211);
     border-radius: 10px; 
     justify-content:space-between; 
   }
+  .card:hover{
+    background-color:lavender;
+  }
     
   .name {
-    margin-bottom: 8px; 
-    margin-top: 8px;
+    margin-bottom: 5px; 
+    margin-top: 5px;
     font-size: 15px;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
@@ -27,20 +30,23 @@
       text-decoration: none;
       display: grid;
       /* grid-template-rows: 50% 50%; */
-      grid-template-columns: 1fr 1fr 1fr 1fr ;
+      grid-template-columns:  1fr 1fr 1fr 1fr  ;
       height: 30px;
       margin-bottom: 10px;
-      margin-top: 1px;
+      margin-top: 0.5px;
+      margin-left: 2%;
+      margin-right: 1%;
      
       /* margin-left: 5px; */
       /* line-height: 100px; */
       text-align: center;
       vertical-align: middle;
+      justify-content: space-around;
         
   }
 
   .imagen{
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   #closeIcon {

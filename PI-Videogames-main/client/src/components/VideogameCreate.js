@@ -20,17 +20,19 @@ const divStyle = {
 function validate (input){
   let errors = {};
   if (!input.name){
+    
     errors.name = "Se requiere un Nombre"
+    
   }
   else if (!input.description){
     errors.description = "Se requiere una Descripción"
   }
-  else if (!input.platforms){
-    errors.platforms = "Se requiere una Plataformas"
-  }
-  else if (!input.genres){
-    errors.genres = "Se requiere al menos un genero"
-  }
+  // else if (!input.platforms){
+  //   errors.platforms = "Se requiere al menos una Plataforma"
+  // }
+  // else if (!input.genres ){
+  //   errors.genres = "Se requiere al menos un genero"
+  // }
   else if (input.rating > 5 || input.rating <= 0) {
     errors.rating = "Se requiere un valor entre 0 y 5";}
   return errors
@@ -48,11 +50,8 @@ function VideogameCreate() {
   
   const allPlatforms = useSelector((state)=> state.platforms)
 
-  // console.log(allPlatforms)
-
 const platformsList = Array.from (new Set((allPlatforms.map((el)=>el.platforms)).flatMap(x => x)))
 
-// console.log(platformsList)
 
   const [errors, setErrors]= useState({})
 
@@ -75,19 +74,27 @@ console.log(input)
     dispatch(getPlatforms());
   },[dispatch])
 
-
+  const nombreValido = /^[a-zA-ZñÑ]+$/i;
+  
   function handleSubmit(e){
     e.preventDefault()
     if (Object.values(errors).length > 0) {
-      alert("Please complete the information required");} 
-      //else if (
-    //   input.name === "" &&
-    //   input.description === "" &&
-    //   input.rating === ""  &&
-    //   !input.platforms.length &&
-    //   !input.genres.length
-    // ) {
-    //   alert("Please complete the form");}
+      alert("Porfavor complete la información requerida");} 
+    if(
+      input.name === ""||
+        input.name.length > 20 ||
+        !nombreValido.test(input.name)
+      ){
+         alert("El nombre es obligatorio, solo puede llevar letras y su largo debe ser menor a 20")
+       }
+      else if(
+        !input.genres.length 
+      ) {
+        alert("Se requiere al menos un Genero");}
+    else if (
+      !input.platforms.length
+      ) { alert("Se requiere al menos una Plataforma");}
+     
     else {
       dispatch(createVideogames(input));
     alert("PERSONAJE CREADO CON EXITO")
@@ -157,9 +164,9 @@ function handleDelete(el){
   </NavLink>
   
   <h1 className={styles.h1}> CREA TU VIDEOJUEGO</h1>
-  <form className = {styles.form} onSubmit={(e) => handleSubmit(e)}>
+  <form  onSubmit={(e) => handleSubmit(e)}>
 
-<div>
+<div className = {styles.form}>
 <div className={styles.input} >
   <div>
   <label>NOMBRE *: </label>
@@ -172,7 +179,7 @@ className={errors.name && styles.danger}
   value={input.name}
   onChange={handleChange}
   />
-<div>
+ <div>
  {!errors.name ? null : <div className={styles.error}>{errors.name}</div>}
  </div>
  </div>
@@ -196,7 +203,9 @@ className={errors.name && styles.danger}
   <div className={styles.label}>
   <label>FECHA LANZAMIENTO: </label>
   </div>
-  <input type="text"
+  <input 
+  className={styles.selectReleased}
+    type="date"
     name="released"
     value={input.released}
     onChange={handleChange}
@@ -229,21 +238,24 @@ className={errors.name && styles.danger}
   <label>GENERO/S *: </label>
   </div>
   <select className={styles.select} onChange={handleSelectGenre}>
+   
             <option value="" disabled={true} className={errors.genres && styles.danger}>Genres</option>
 
             {allGenres.map((t)=>(
-              <option key={t.id} value={t.name}>{t.name}</option>
+              <option key={t.id}  value={t.name}>{t.name}</option>
                ))}
+
   </select>
-  <div>
-  {!errors.genres ? null : <div className={styles.error}>{errors.genres}</div>}
-  </div>
+
+
+  {!errors.genres ? null : <p className={styles.error}>{errors.genres}</p>}
+
   </div>
 
   {input.genres.map((el, index) => (
-            <div key={index}>
+            <div className={styles.option} key={index}>
               {el}
-              <button type="button" onClick={() => handleDelete(el)}>X</button>
+              <button className={styles.x}  type="button" onClick={() => handleDelete(el)}>X</button>
             </div>
           ))}
 
@@ -252,29 +264,29 @@ className={errors.name && styles.danger}
 <div >
   <label>PLATAFORMA/S *: </label>
   </div>
-   <select className={styles.select}
+   <select className={styles.selectPlat}
    onChange={handleSelectPlatform}>
     <option value="" disabled={true} >Platforms</option>
       {platformsList.map((t, index)=>(
 
-<option key={index} value={t}>{t}</option>
+<option key={index} className={styles.option} value={t}>{t}</option>
 ))}
           </select>
 </div>
 
 
 {input.platforms.map((el, index) => (
-            <div key={index}>
+            <div className={styles.option} key={index}>
               {el}
-              <button type="button" onClick={() => handleDelete(el)}>X</button>
+              <button className={styles.x} type="button" onClick={() => handleDelete(el)}>X</button>
             </div>
           ))}
-{!errors.platforms ? null : <p className={styles.error}>{errors.platforms}</p>}
+{/* {!errors.platforms ? null : <p className={styles.error}>{errors.platforms}</p>} */}
 
 </div>
 <div >
    <input className={styles.crear} type="submit" value="CREAR" 
-   disabled={!!errors.genres || !!errors.platforms}
+   disabled={errors.genres || errors.platforms}
    ></input>
    </div>
   </form>
