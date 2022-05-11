@@ -3,7 +3,7 @@ const { Router } = require('express');
 
 const gamesRoute = require("./videogame")
 const generoRoute = require("./genre")
-// const platformRoute = require("./platform")
+
 
 const router = Router();
 
@@ -12,6 +12,6 @@ const router = Router();
 
 router.use ("/videogame",gamesRoute)
 router.use ("/genre", generoRoute)
-// router.use ("/platform", platformRoute)
+
 
 module.exports = router;

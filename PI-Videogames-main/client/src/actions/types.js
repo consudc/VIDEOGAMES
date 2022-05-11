@@ -3,7 +3,7 @@ export const GET_VIDEOGAME = "GET_VIDEOGAMES"
 
 export const FILTER_GENRE = "FILTER_GENRE"
 export const FILTER_CREATED = "FILTER_CREATED"
-//filter de game existente??
+
 
 export const ORDER_RATING= "ORDER_RATING"
 

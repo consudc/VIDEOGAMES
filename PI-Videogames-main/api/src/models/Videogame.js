@@ -24,7 +24,6 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
 
-    //aca tengo que ver como poner por defecto una imagen caundo crean uno
     image:{
       type: DataTypes.STRING,
       allowNull: true,

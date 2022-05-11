@@ -36,7 +36,6 @@ router.get("/", async (req, res, next) =>{
      
 try{
 const name = req.query.name
-// console.log(name)
 
 const resultApi = await urlConcat()
 
@@ -66,12 +65,12 @@ const resultFinalApi = resultApi.map((el)=>{
                ]
      })
      
-     const infoTotal = videogamesDb.concat(resultFinalApi)
+     const infoTotal = resultFinalApi.concat(videogamesDb)
+     //const infoTotal = videogamesDb.concat(resultFinalApi)
 
      
         if (name){
-          //el includes se pone cuando en la busqueda no se necesita 
-            
+          
           let videogameName = infoTotal.filter 
           (el => el.name.toLowerCase().includes(name.toLowerCase()))
            let resultName = videogameName.slice(0, 15);
@@ -102,7 +101,7 @@ try{
            createdInDb
           } = req.body //esto es lo que recibe del body
      
-          if (!name|| !description||! rating)
+          if (!name|| !description)
           return res.status(404).json({msg: "ERROR!!"});
           else{
      
@@ -156,12 +155,7 @@ const getApiId = async (id) => {
 
      }
 
-     //console.log( detailId)
-
-     // const descriptionId = await apiId.data.description
-     // console.log(descriptionId)
-
-         return detailId
+        return detailId
  
  }
 
@@ -179,7 +173,7 @@ const videoGameApi = await getApiId(id);
 if (id.includes("-")) {
 
 const videoGameDb = await Videogame.findByPk(id,
-//const videoGameDb = await Videogame.findAll({id},
+
       {
           include :[{
               model : Genre,
@@ -205,6 +199,58 @@ else res.status(404).json({ msg: "Game not found" })
 })
 
 
+// router.delete('/:name', async(req, res, next) => {
 
+// try{
+
+//      const {name} = req.params
+
+     
+//      const resultApi = await urlConcat()
+     
+//      const resultFinalApi = resultApi.map((el)=>{
+//           return{
+//                id : el.id,
+//                name : el.name,
+//                image: el.background_image,
+//                platforms: el.platforms.map(el => el.platform.name), 
+//                rating: el.rating,
+//                released: el.released,
+//                genres : el.genres.map(el=> el.name),
+//                }
+         
+//           })
+     
+//          const videogamesDb = await Videogame.findAll({
+//                //esto es otra promesa
+//                     include :[{
+//                         model : Genre ,
+//                         //aca no hace falta aclarar porque es un solo atributo
+//                         attributes : ["name"],
+//                         through: {
+//                             attributes : [],}
+//                         },
+     
+//                     ]
+//           })
+          
+//      const infoTotal = videogamesDb.concat(resultFinalApi)
+//      console.log(infoTotal)
+     
+          
+//      if (name){
+ 
+//      const result = infoTotal.filter(el => el.name !== name)
+//      console.log(result)
+
+//      res.status(200).send("videogame eliminado")}
+
+// else res.status(404).send("no se encontro")
+
+// } catch(error){
+//      next(error)
+     
+// }});
+ 
 
 module.exports = router;

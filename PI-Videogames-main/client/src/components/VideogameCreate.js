@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+
 const divStyle = {
   backgroundImage: `url(https://i0.wp.com/wallpapersfortech.com/wp-content/uploads/2021/07/Gaming-PC-Wallpaper-HD.png?fit=3840%2C2160&ssl=1)`,
   backgroundSize: "cover",
@@ -27,12 +28,12 @@ function validate (input){
   else if (!input.description){
     errors.description = "Se requiere una Descripción"
   }
-  // else if (!input.platforms){
-  //   errors.platforms = "Se requiere al menos una Plataforma"
-  // }
-  // else if (!input.genres ){
-  //   errors.genres = "Se requiere al menos un genero"
-  // }
+  else if (!input.platforms){
+    errors.platforms = "Se requiere al menos una Plataforma"
+  }
+  else if (!input.genres ){
+    errors.genres = "Se requiere al menos un genero"
+  }
   else if (input.rating > 5 || input.rating <= 0) {
     errors.rating = "Se requiere un valor entre 0 y 5";}
   return errors
@@ -45,7 +46,7 @@ function VideogameCreate() {
   const history = useHistory()
 
 
-  const allGenres = useSelector((state)=> state.genres)
+const allGenres = useSelector((state)=> state.genres)
   console.log(allGenres)
   
   const allPlatforms = useSelector((state)=> state.platforms)
@@ -76,11 +77,13 @@ console.log(input)
 
   const nombreValido = /^[a-zA-ZñÑ]+$/i;
   
-  function handleSubmit(e){
+ async function handleSubmit(e){
     e.preventDefault()
+    
     if (Object.values(errors).length > 0) {
-      alert("Porfavor complete la información requerida");} 
-    if(
+        alert("Por favor complete la información requerida");}
+
+     else if(
       input.name === ""||
         input.name.length > 20 ||
         !nombreValido.test(input.name)
@@ -97,7 +100,7 @@ console.log(input)
      
     else {
       dispatch(createVideogames(input));
-    alert("PERSONAJE CREADO CON EXITO")
+    alert("VIDEOGAME CREADO CON EXITO")
     setInput({
     name : "",
     description :"",

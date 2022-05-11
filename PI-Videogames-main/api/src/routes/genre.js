@@ -15,7 +15,8 @@ try{
     const generosApi = await axios.get(`https://api.rawg.io/api/genres?key=${YOUR_API_KEY}`)
     const  genres = await generosApi.data.results.map ((el)=> el.name)
 
-         
+
+//El método forEach() ejecuta la función indicada una vez por cada elemento del array.
     genres.forEach((el) => {
         Genre.findOrCreate({
             where :{name: el}
@@ -23,8 +24,6 @@ try{
     })
 
     const allGenres = await Genre.findAll()
-    console.log(allGenres)
-   
 
     
    return res.status(200).send(allGenres)

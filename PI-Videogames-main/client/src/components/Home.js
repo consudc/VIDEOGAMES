@@ -6,21 +6,13 @@ import Card from "./Card.js"
 import Paginado from './Paginado.js'
 import SearchBar from './SearchBar.js'
 
-
 import { useDispatch, useSelector} from "react-redux"
 //y estos son equivalentes a mapsStateToProps y mapsdispatchToProps
 import { getVideogames, orderAlphabetic, orderRating, filterByGenre, filterCreated, getGenres} from '../actions'
 
-// const inputStyle = {
-//     textDecoration: "underline", 
-//     cursor: "pointer", 
-//     backgroundColor:"lavender",
-//     borderRadius: "5px",
-//     height:"20px",
-// }
 
 function Home() {
-// este es como mapsdispatchToProps
+
   const dispatch = useDispatch();
   // aca con el useEffect despachas la accion a tu store  
   
@@ -32,32 +24,28 @@ function Home() {
 
   const allGenres = useSelector((state)=> state.genres)
 
-// esto es equivalente a mapsStateToProps
   
-//   //este setea la pagina actual, que comienza en 1 y despues va cambiando a travez de setCurrentPage
+ //este setea la pagina actual, que comienza en 1 y despues va cambiando a travez de setCurrentPage
 const[currentPage, setCurrentPage] = useState(1)
 
+//este es un estado local que setea cuantos videogames hay por pagina
 const[gamesPerPage, setGamesPerPage] = useState(15)
 
-//este es un estado local que setea cuantos videogames hay por pagina
 const indexLastVideogame = currentPage * gamesPerPage//por ejemplo en el 1er caso daria 15 ==> es el indice en el que tiene que empezar la proxima, esto represnta a los primero 15 games hasta la posicion 14
 const indexFirstVideogame = indexLastVideogame - gamesPerPage //==> en el primer caso empieza en la pos 0, despues pos 15, despues 30, despues 45, 60, 75, 90 ==> el ultimo va a tener 12
 
 
 const currentGamesPage = 
-
 allGames.length >0? allGames.slice(indexFirstVideogame,indexLastVideogame) : allGames
-console.log(currentGamesPage)
 
-// //aca ejecuto el setCurrentPage => set State
+
+//aca ejecuto el setCurrentPage => set State
 const paginado = (pageNumber) =>{
 setCurrentPage(pageNumber)}
 
 //constante paginado es la que me va a ayudar en el renderizado por pagina
 
-
 const[order, setOrder] = useState("all")
-
 
 
 //esto es equivalente a componentDidmount y componentDidUpdate
@@ -71,13 +59,13 @@ useEffect (()=>{
 },[dispatch])
 
 
-
+//este es para resetear todos los games ==> 
  function handleClick(e){
    e.preventDefault();
    // esto es para que se resetee todo de vuelta! te traiga nuevamnete todos los games
    dispatch(getVideogames())
    setCurrentPage(1)
-   setOrder(e.target.value)
+  setOrder(e.target.value)
   }
 
 //las funciones que son hundleChange ==>> se desptcha una accion!!
@@ -99,11 +87,12 @@ function handleRating (e){
  function handleOrder(e){
   e.preventDefault();
   dispatch(orderAlphabetic(e.target.value)) //me trae el array ordenado de manera asc o desc en funcion de mi e.target.value
-  // // esto es para que se resetee todo de vuelta! te traiga nuevamnete toso los games
+  // esto es para que se resetee todo de vuelta! te traiga nuevamnete toso los games
   setCurrentPage(1)
   //esto sirve para que me ordene, es decir comienza con un string vacio y luego se setea segun el target value
   setOrder(e.target.value)
 }
+
 
   return (
     <div className={styles.body}>
@@ -127,12 +116,11 @@ function handleRating (e){
   </div>
 
 
-
   <div>
       <button className={styles.btnInput} onClick={e=>{handleClick(e)}}> TODOS TUS JUEGOS</button>
         </div>
 
-        <SearchBar/>
+   <SearchBar/>
 
 
       </div>
@@ -141,7 +129,7 @@ function handleRating (e){
        <ul>
        <p className={styles.p}>Ordena por nombre </p>
         <select className= {styles.select} onChange={e=>handleOrder(e)}>
-        <option value= "" disabled={true}>Orden</option> 
+        <option value= "all" disabled={true}>Todos</option> 
           <option value="asc">A-Z</option>
           <option value= "desc">Z-A</option>
           </select>
@@ -158,13 +146,13 @@ function handleRating (e){
         </ul>
  
 
-      {/* cuando hacemos tanto un ordenamiento como un firltrado usamos el select y en option ponemos cada una de los valores a seleccionar y con su value que nos sirve para apuntar que es lo que queremos */}
+{/* cuando hacemos tanto un ordenamiento como un firltrado usamos el select y en option ponemos cada una de los valores a seleccionar y con su value que nos sirve para apuntar que es lo que queremos */}
       <ul>
         
         <p className={styles.p}>Filtro creado/existente </p>
          
           <select className= {styles.select} onChange={e=>handleFilterCreated(e)}> 
-          <option value= "all" disabled={true} >Todos</option>
+          <option value= "all" disabled={false}>Todos</option>
           <option value= "exis">Existente</option>
           <option value= "creado">Nuevo</option>
           </select>
@@ -176,7 +164,7 @@ function handleRating (e){
 
           <select className= {styles.select} onChange={e=>handleFilterGenres(e)}> 
 
-          <option value= "" disabled={true}>Generos</option>
+          <option value= "all" disabled={false}>Generos</option>
           
           {allGenres.map((g)=>(
           <option key ={g.id} value={g.name} label={g.name} >
@@ -189,18 +177,16 @@ function handleRating (e){
  
 </div> 
   
-  {/* le pagamos al componente Paginado por Props  */}
+  {/* le pasamos al componente Paginado por Props  */}
   <Paginado
-  gamesPerPage={gamesPerPage}
+  gamesPerPage={gamesPerPage} // 15
   allGames={allGames.length} //para que me de un valor numerico ==> 100 videogames
   paginado={paginado}
   currentPage={currentPage}
- 
   /> 
   
 
 
- 
  
 {/* aca no vas a hacer el mapeo de allGames=> sino de la porcion de pokemons por pagina */}
 <div className={styles.contenedor}>
@@ -208,17 +194,17 @@ function handleRating (e){
  currentGamesPage.map((el) =>{
     return(  
     <div key = {el.id}>                   
-      <Link className={styles.link} to={"/home/" + el.id}>
+    <Link className={styles.link} to={"/home/" + el.id}>
     <div >
    <Card
-  //  key={el.id}
    className= {styles.cards}
    name ={el.name} 
    genres= {el.createdInDb? el.genres.map((g)=> g.name) : el.genres} 
    image= {el.image}
+
     /> 
     </div>
-    </Link>
+    </Link> 
     </div>
   )}) 
   

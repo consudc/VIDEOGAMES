@@ -4,7 +4,7 @@ import styles from "../components/VideogameDetail.module.css"
 import { getDetailVideogame } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+
 
 
 
@@ -16,11 +16,10 @@ function VideogameDetail(props) {
 const allDetail = useSelector((state)=> state.detail)
 
 
- 
   useEffect (()=>{  
     //esto es para acceder a los params(id) de la ruta
-    dispatch(getDetailVideogame(props.match.params.id));
-  },[dispatch])
+    dispatch(getDetailVideogame(props.match.params.id),
+    )},[dispatch])
   
 
   return (
@@ -78,14 +77,5 @@ const allDetail = useSelector((state)=> state.detail)
 
 export default VideogameDetail
 
-// // const detailId = {
-// //   id :  dataUrl.id,
-// //   description : dataUrl.description_raw,
-// //   name : dataUrl.name,
-// //   image : dataUrl.background_image,
-// //   platforms: dataUrl.platforms.map(el => el.platform.name), 
-// //   released: dataUrl.released,
-// //   rating: dataUrl.rating,
-// //   genres : dataUrl.genres.map(el=> el.name),
 
-// // }
+// //   id :  dataUrl.id,

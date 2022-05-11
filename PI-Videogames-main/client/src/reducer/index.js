@@ -3,7 +3,7 @@ import {GET_GAME_BYNAME, GET_GENRE, GET_GAME_DETAIL, GET_VIDEOGAME, ORDER_NAME, 
 
 
 // EL REDUCER SIEMPRE TIENE QUE GENERAR UN NUEVO ESTADO, ESTE ES EL ESTADO GLOBAL!!! osea cuando se modifique algo
-//esto puede ser tmb un objeto, o un array que contenga los objetos
+
 const initialState = {
     allVideogames : [],
     videogames: [],
@@ -33,13 +33,12 @@ function reducer (state = initialState, {payload, type}){
         //(en este caso el payload va a ser el value del select)
         // si el value o el payload es igual a All que me traiga todos los videogames
 
-        
        const genreFiltered = payload === "all"? allGames: 
         
         allGames.filter((el) => 
         el.genres.includes(payload))
         
-    // console.log( genreFiltered )
+  
         return {
             ...state,
             videogames: genreFiltered
@@ -55,7 +54,7 @@ function reducer (state = initialState, {payload, type}){
 
     return{
         ...state,
-        videogames: createdFiltered
+        videogames: payload === "all"? gamesCreated :createdFiltered
     }
     //si es "all" que me traiga todo, osea el state.allVideogames, sino que me traiga la funcion createdFiltered donde hace el condicional, que si selecciona "creado" busca si existe  en la base de datos (que es el creado por el usuario) o si no es eso que te traiga lo existente
 
@@ -73,8 +72,6 @@ function reducer (state = initialState, {payload, type}){
                 ...state,
                detail: payload 
             }
-
-
 
     case CREATE_VIDEOGAMES :
             return{
@@ -112,7 +109,7 @@ function reducer (state = initialState, {payload, type}){
             return 1}
         else return 0
     })
-    // console.log(orderAlph)
+ 
 
     return{
         ...state,
@@ -122,6 +119,7 @@ function reducer (state = initialState, {payload, type}){
     case ORDER_RATING : 
 
     const ratingOrder = state.allVideogames
+
 
     const orderRat = payload === "ascR"? 
     
@@ -143,7 +141,7 @@ function reducer (state = initialState, {payload, type}){
 
     return{
         ...state,
-        videogames:  payload === "all"? ratingOrder :orderRat
+        videogames: orderRat
     }
 
      
