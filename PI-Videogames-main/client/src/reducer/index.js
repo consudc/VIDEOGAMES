@@ -30,9 +30,6 @@ function reducer (state = initialState, {payload, type}){
 
         const allGames = state.allVideogames
         
-        //(en este caso el payload va a ser el value del select)
-        // si el value o el payload es igual a All que me traiga todos los videogames
-
        const genreFiltered = payload === "all"? allGames: 
         
         allGames.filter((el) => 
@@ -43,7 +40,7 @@ function reducer (state = initialState, {payload, type}){
             ...state,
             videogames: genreFiltered
         }
-// esto es para no pisar el estado general 
+
     case FILTER_CREATED :
 
     const gamesCreated = state.allVideogames

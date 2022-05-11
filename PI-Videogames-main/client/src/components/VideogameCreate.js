@@ -49,7 +49,7 @@ function VideogameCreate() {
 const allGenres = useSelector((state)=> state.genres)
   console.log(allGenres)
   
-  const allPlatforms = useSelector((state)=> state.platforms)
+const allPlatforms = useSelector((state)=> state.platforms)
 
 const platformsList = Array.from (new Set((allPlatforms.map((el)=>el.platforms)).flatMap(x => x)))
 
@@ -75,7 +75,7 @@ console.log(input)
     dispatch(getPlatforms());
   },[dispatch])
 
-  const nombreValido = /^[a-zA-ZñÑ]+$/i;
+  const nombreValido =/^[a-zA-Z ]*$/
   
  async function handleSubmit(e){
     e.preventDefault()
@@ -284,7 +284,6 @@ className={errors.name && styles.danger}
               <button className={styles.x} type="button" onClick={() => handleDelete(el)}>X</button>
             </div>
           ))}
-{/* {!errors.platforms ? null : <p className={styles.error}>{errors.platforms}</p>} */}
 
 </div>
 <div >

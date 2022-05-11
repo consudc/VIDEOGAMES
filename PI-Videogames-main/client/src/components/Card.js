@@ -8,10 +8,7 @@ function Card({image, name, genres}) {
   return (
   <div className={styles.card}>
   <img  className={styles.imagen} src={image} alt="img not found" width= "190px" height="90px" />
-{/* 
-  <div id="closeIcon" >
-  <button onClick={onClose}>X</button>
-  </div> */}
+
 
     <div className={styles.cardBody}>
       <h1 className={styles.name}>{name}</h1>
@@ -20,6 +17,8 @@ function Card({image, name, genres}) {
         <p key={index}> {t}</p> 
         ))}
       </h3> 
+
+
 
       
       

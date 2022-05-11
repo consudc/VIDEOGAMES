@@ -77,7 +77,7 @@ const resultFinalApi = resultApi.map((el)=>{
 
      resultName.length? res.status(200).send(resultName):
      
-     res.status(404).send({Error:"No se encontro el videojuegos"})
+     res.status(404).send("No se encontro el videojuego")
  
 }
 
@@ -198,59 +198,5 @@ else res.status(404).json({ msg: "Game not found" })
 }
 })
 
-
-// router.delete('/:name', async(req, res, next) => {
-
-// try{
-
-//      const {name} = req.params
-
-     
-//      const resultApi = await urlConcat()
-     
-//      const resultFinalApi = resultApi.map((el)=>{
-//           return{
-//                id : el.id,
-//                name : el.name,
-//                image: el.background_image,
-//                platforms: el.platforms.map(el => el.platform.name), 
-//                rating: el.rating,
-//                released: el.released,
-//                genres : el.genres.map(el=> el.name),
-//                }
-         
-//           })
-     
-//          const videogamesDb = await Videogame.findAll({
-//                //esto es otra promesa
-//                     include :[{
-//                         model : Genre ,
-//                         //aca no hace falta aclarar porque es un solo atributo
-//                         attributes : ["name"],
-//                         through: {
-//                             attributes : [],}
-//                         },
-     
-//                     ]
-//           })
-          
-//      const infoTotal = videogamesDb.concat(resultFinalApi)
-//      console.log(infoTotal)
-     
-          
-//      if (name){
- 
-//      const result = infoTotal.filter(el => el.name !== name)
-//      console.log(result)
-
-//      res.status(200).send("videogame eliminado")}
-
-// else res.status(404).send("no se encontro")
-
-// } catch(error){
-//      next(error)
-     
-// }});
- 
 
 module.exports = router;

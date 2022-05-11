@@ -7,19 +7,18 @@ import Paginado from './Paginado.js'
 import SearchBar from './SearchBar.js'
 
 import { useDispatch, useSelector} from "react-redux"
-//y estos son equivalentes a mapsStateToProps y mapsdispatchToProps
+
 import { getVideogames, orderAlphabetic, orderRating, filterByGenre, filterCreated, getGenres} from '../actions'
 
 
 function Home() {
 
   const dispatch = useDispatch();
-  // aca con el useEffect despachas la accion a tu store  
-  
-  //cada vez que lo invoco me trae todo el state
+ 
+
 
   const allGames= useSelector((state)=> state.videogames)
-  console.log(allGames)
+  // console.log(allGames)
   
 
   const allGenres = useSelector((state)=> state.genres)
@@ -28,18 +27,18 @@ function Home() {
  //este setea la pagina actual, que comienza en 1 y despues va cambiando a travez de setCurrentPage
 const[currentPage, setCurrentPage] = useState(1)
 
-//este es un estado local que setea cuantos videogames hay por pagina
+
 const[gamesPerPage, setGamesPerPage] = useState(15)
 
-const indexLastVideogame = currentPage * gamesPerPage//por ejemplo en el 1er caso daria 15 ==> es el indice en el que tiene que empezar la proxima, esto represnta a los primero 15 games hasta la posicion 14
-const indexFirstVideogame = indexLastVideogame - gamesPerPage //==> en el primer caso empieza en la pos 0, despues pos 15, despues 30, despues 45, 60, 75, 90 ==> el ultimo va a tener 12
+const indexLastVideogame = currentPage * gamesPerPage
+const indexFirstVideogame = indexLastVideogame - gamesPerPage
 
 
 const currentGamesPage = 
 allGames.length >0? allGames.slice(indexFirstVideogame,indexLastVideogame) : allGames
 
 
-//aca ejecuto el setCurrentPage => set State
+
 const paginado = (pageNumber) =>{
 setCurrentPage(pageNumber)}
 
@@ -48,8 +47,6 @@ setCurrentPage(pageNumber)}
 const[order, setOrder] = useState("all")
 
 
-//esto es equivalente a componentDidmount y componentDidUpdate
-// aca le pasamos como segundo paramentro un array vacio porque no depende de nadie, sino tendrias que indeicar de que depende este efecto, sino se estaria actualizando todo el tiempo
 useEffect (()=>{
   dispatch(getVideogames(),
   )},[dispatch])
@@ -62,13 +59,13 @@ useEffect (()=>{
 //este es para resetear todos los games ==> 
  function handleClick(e){
    e.preventDefault();
-   // esto es para que se resetee todo de vuelta! te traiga nuevamnete todos los games
    dispatch(getVideogames())
    setCurrentPage(1)
-  setOrder(e.target.value)
+  
+  setOrder((e.target.value))
   }
 
-//las funciones que son hundleChange ==>> se desptcha una accion!!
+
  function handleFilterCreated(e){
    dispatch(filterCreated(e.target.value))
  }
@@ -80,16 +77,14 @@ useEffect (()=>{
 
 function handleRating (e){
   dispatch(orderRating(e.target.value))
-  setCurrentPage(1)
-  setOrder(e.target.value)
+    setCurrentPage(1)
+    setOrder(e.target.value)
 }
 
  function handleOrder(e){
   e.preventDefault();
-  dispatch(orderAlphabetic(e.target.value)) //me trae el array ordenado de manera asc o desc en funcion de mi e.target.value
-  // esto es para que se resetee todo de vuelta! te traiga nuevamnete toso los games
+  dispatch(orderAlphabetic(e.target.value)) 
   setCurrentPage(1)
-  //esto sirve para que me ordene, es decir comienza con un string vacio y luego se setea segun el target value
   setOrder(e.target.value)
 }
 
@@ -144,9 +139,10 @@ function handleRating (e){
   <option value= "descR">5-0</option>
         </select>
         </ul>
+      
  
 
-{/* cuando hacemos tanto un ordenamiento como un firltrado usamos el select y en option ponemos cada una de los valores a seleccionar y con su value que nos sirve para apuntar que es lo que queremos */}
+
       <ul>
         
         <p className={styles.p}>Filtro creado/existente </p>
@@ -197,7 +193,9 @@ function handleRating (e){
     <Link className={styles.link} to={"/home/" + el.id}>
     <div >
    <Card
+   
    className= {styles.cards}
+  
    name ={el.name} 
    genres= {el.createdInDb? el.genres.map((g)=> g.name) : el.genres} 
    image= {el.image}

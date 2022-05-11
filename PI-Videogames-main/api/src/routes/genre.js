@@ -10,7 +10,8 @@ const {YOUR_API_KEY} = process.env;
 
 
 router.get("/", async (req, res, next)=>{
-try{
+
+    try{
 
     const generosApi = await axios.get(`https://api.rawg.io/api/genres?key=${YOUR_API_KEY}`)
     const  genres = await generosApi.data.results.map ((el)=> el.name)
@@ -36,6 +37,7 @@ catch(error) {
 })
 
 
-
+// //El método forEach() ejecuta la función indicada una vez por cada elemento del array.
+ 
 
 module.exports = router;

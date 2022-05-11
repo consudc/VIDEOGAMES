@@ -43,7 +43,7 @@ export function getPlatforms (){
 export function createVideogames (payload){
     return async function (dispatch){
         var json = await axios.post("http://localhost:3001/videogame", payload)
-        console.log(json.data)
+        // console.log(json.data)
         return json
 
     }
@@ -70,7 +70,6 @@ export function orderAlphabetic (payload){
     payload }   
 }
 
-//acael name es mi payload, osea es lo que le voy a pasar a la action!
 
 export function orderRating (payload){
     return {
@@ -78,26 +77,31 @@ export function orderRating (payload){
     payload }   
 }
 
+
+
 //SEARCH BAR
 export function getVideogameName(name){
-    return async function (dispatch){
-        try{
-        var json = await axios.get("http://localhost:3001/videogame?name=" + name);
+    return function (dispatch){
+        
+      return axios.get("http://localhost:3001/videogame?name=" + name)
+         .then(result =>{
 
+                // console.log(result.data)
+                dispatch({
+                    type : GET_GAME_BYNAME,
+                    payload : result.data })
+                })
 
-        return dispatch({
-            type : GET_GAME_BYNAME,
-            payload : json.data 
-        })
-     
-        } catch(error){ 
+         .catch(error => 
             
-            alert("no se encuentra el videogame")
-            // console.log(error)
+            alert("No se encontro en video game"))
+            
+        
         }
 }
 
-}
+
+
 export function getDetailVideogame(id){
     return async function (dispatch){
         try{

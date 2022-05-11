@@ -77,5 +77,3 @@ const allDetail = useSelector((state)=> state.detail)
 
 export default VideogameDetail
 
-
-// //   id :  dataUrl.id,
