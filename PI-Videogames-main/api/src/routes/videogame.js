@@ -36,6 +36,7 @@ router.get("/", async (req, res, next) =>{
      
 try{
 const name = req.query.name
+const {genero}= req.query
 
 const resultApi = await urlConcat()
 
@@ -66,7 +67,7 @@ const resultFinalApi = resultApi.map((el)=>{
      })
      
      const infoTotal = resultFinalApi.concat(videogamesDb)
-     //const infoTotal = videogamesDb.concat(resultFinalApi)
+  
 
      
         if (name){
@@ -107,7 +108,7 @@ try{
      
               const newGame =  await Videogame.create({
                     name,
-                    image: image? image :"https://st4.depositphotos.com/18984178/30114/i/450/depositphotos_301143034-stock-photo-retro-3d-render-banner-with.jpg",
+                    image: image,
                     description,
                     rating,
                     createdInDb,
@@ -197,6 +198,56 @@ else res.status(404).json({ msg: "Game not found" })
      
 }
 })
+
+
+router.delete("/:id", async(req, res,next) =>{
+
+     try{
+          const {id} = req.params
+     
+     
+     if (id.length <= 7){
+ 
+     res.status(404).send({ msg: "No se puede eliminar juegos existentes" })
+     }
+     
+     if (id.includes("-")) {
+     
+     const videoGameDb = await Videogame.findByPk(id,
+                {
+               include :[{
+                   model : Genre,
+     
+                   attributes : ["name"],
+                        through: {
+                            attributes : [],}
+              },
+     
+          ]
+          }
+              )
+          
+              
+          await videoGameDb.destroy({
+               where :{
+                    id
+               }
+          })
+          
+          res.status(200).send({ msg: "Juego eliminado" });
+     }
+     
+     // else res.status(404).json({ msg: "Game not found" })
+     
+     }catch(error){
+          next(error)
+          
+     }
+     })
+
+
+
+
 
 
 module.exports = router;
