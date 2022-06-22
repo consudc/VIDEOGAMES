@@ -1,33 +1,35 @@
 import React from 'react'
+import "./CardNew.css"
 
-
-import styles from "./Card.module.css"
-
-function Card({image, name, genres}) {
+function Card({image, name, genres, rating}) {
 
   return (
-  <div className={styles.card}>
-  <img  className={styles.imagen} src={image} alt="img not found" width= "190px" height="90px" />
+<div>
 
+  <div className="gameCard">
+  <div className="divdetailgame">
+  <div className="face front">
+  {/* <button onClick={onClose}>x</button> */}
+  <img  src={image} alt="img not found" />
 
-    <div className={styles.cardBody}>
-      <h1 className={styles.name}>{name}</h1>
-
-<h3 className={styles.genre}>{genres.map((t,index) =>( 
+  </div>
+    
+<div className="textVideogame face back">
+<h1 className="nombreGame"><i>{name}</i></h1>
+<h3 className="ratingeGame"><i>{rating}</i></h3>
+<h4><i>{genres.map((t,index) =>( 
         <p key={index}> {t}</p> 
         ))}
-      </h3> 
-
-
-
-      
-      
-
+      </i></h4> 
 
     </div>
-
     </div>
+    </div>
+  </div>
   )
 }
 
+
+
 export default Card
+

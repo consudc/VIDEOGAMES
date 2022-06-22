@@ -1,5 +1,5 @@
 
-import {GET_GAME_BYNAME, GET_GENRE, GET_GAME_DETAIL, GET_VIDEOGAME, ORDER_NAME, ORDER_RATING, FILTER_CREATED, FILTER_GENRE, GET_PLATFORMS, CREATE_VIDEOGAMES} from "../actions/types"
+import {GET_GAME_BYNAME, GET_GENRE, GET_GAME_DETAIL, GET_VIDEOGAME, ORDER_NAME, ORDER_RATING, FILTER_CREATED, FILTER_GENRE, GET_PLATFORMS, CREATE_VIDEOGAMES, DELETE_GAMES} from "../actions/types"
 
 
 // EL REDUCER SIEMPRE TIENE QUE GENERAR UN NUEVO ESTADO, ESTE ES EL ESTADO GLOBAL!!! osea cuando se modifique algo
@@ -54,6 +54,14 @@ function reducer (state = initialState, {payload, type}){
         videogames: payload === "all"? gamesCreated :createdFiltered
     }
     //si es "all" que me traiga todo, osea el state.allVideogames, sino que me traiga la funcion createdFiltered donde hace el condicional, que si selecciona "creado" busca si existe  en la base de datos (que es el creado por el usuario) o si no es eso que te traiga lo existente
+    
+    case DELETE_GAMES :
+
+           const deleteGames = state.allVideogames
+           return {
+               ...state,
+               videogames  :  deleteGames.filter (c => c.id !== payload) 
+            }
 
     
     case GET_GAME_BYNAME :
@@ -89,24 +97,26 @@ function reducer (state = initialState, {payload, type}){
     case ORDER_NAME : 
 
     const nameOrder = state.allVideogames
-
+    
     const orderAlph = payload === "asc"? 
     
-    nameOrder.sort(function(a, b){
+        nameOrder.sort(function(a, b){
         if (a.name > b.name){
         return 1}
         if (b.name > a.name){
             return -1}
-        else return 0
-    })
-     : nameOrder.sort(function(a, b){
+        else return 0 }
+        )
+        :
+        nameOrder.sort(function(a, b){
         if (a.name > b.name){
         return -1}
         if (b.name > a.name){
             return 1}
-        else return 0
-    })
- 
+        else return 0}
+    )
+
+    console.log(orderAlph)
 
     return{
         ...state,

@@ -3,15 +3,25 @@ import {Link, NavLink} from "react-router-dom"
 import styles from "./Home.module.css"
 import {useState, useEffect} from "react"//hooks
 import Card from "./Card.js"
+
 import Paginado from './Paginado.js'
 import SearchBar from './SearchBar.js'
+//import LogIn from './LogIn'
+//import {useAuth0} from "@auth0/auth0-react"
+
+
 
 import { useDispatch, useSelector} from "react-redux"
 
 import { getVideogames, orderAlphabetic, orderRating, filterByGenre, filterCreated, getGenres} from '../actions'
 
+// import LogOut from './LogOut'
+// import Profile from './Profile'
+
 
 function Home() {
+
+  // const {isAuthenticated} = useAuth0()
 
   const dispatch = useDispatch();
  
@@ -20,10 +30,8 @@ function Home() {
   const allGames= useSelector((state)=> state.videogames)
   // console.log(allGames)
   
-
   const allGenres = useSelector((state)=> state.genres)
 
-  
  //este setea la pagina actual, que comienza en 1 y despues va cambiando a travez de setCurrentPage
 const[currentPage, setCurrentPage] = useState(1)
 
@@ -47,6 +55,7 @@ setCurrentPage(pageNumber)}
 const[order, setOrder] = useState("all")
 
 
+
 useEffect (()=>{
   dispatch(getVideogames(),
   )},[dispatch])
@@ -56,13 +65,13 @@ useEffect (()=>{
 },[dispatch])
 
 
+
 //este es para resetear todos los games ==> 
  function handleClick(e){
    e.preventDefault();
    dispatch(getVideogames())
    setCurrentPage(1)
-  
-  setOrder((e.target.value))
+   setOrder((e.target.value))
   }
 
 
@@ -88,15 +97,22 @@ function handleRating (e){
   setOrder(e.target.value)
 }
 
+// function handleOrderAll (e){
+//   e.preventDefault();
+//   setCurrentPage(1)
+//   setOrder(e.target.value)
+
+// }
+
 
   return (
     <div className={styles.body}>
     <div className={styles.header}>
     <div>
     <NavLink to="/" exact>
-    <button className={styles.btn}>
-        {"<< BACK"}
-      </button>
+
+    <img src = {"https://media3.giphy.com/media/FtTfX6RsPPExhjuymq/200w.webp?cid=790b7611xrpo8f8qrk4vpjooq62pednxs5al5vaa2muy2lv4&rid=200w.webp&ct=s"} alt ="Img not found" className={styles.btn}/>
+  
       </NavLink>
     </div>
     <div  >
@@ -105,7 +121,7 @@ function handleRating (e){
           className={styles.btnInput}
           
           type= "submit" 
-          value ="CREA TUS JUEGOS">
+          value ="CREA TU JUEGO">
           </input>
           </NavLink>
   </div>
@@ -115,16 +131,34 @@ function handleRating (e){
       <button className={styles.btnInput} onClick={e=>{handleClick(e)}}> TODOS TUS JUEGOS</button>
         </div>
 
-   <SearchBar/>
+   <SearchBar
+   setCurrentPage={setCurrentPage}/>
 
 
       </div>
+    {/* <div>
+
+    {isAuthenticated ? (
+      <>
+    <Profile/>
+    <LogOut/>
+
+  </>
+    )
+    : (
+    <LogIn/>)
+    }
+    
+    </div> */}
+    
+
 <div className={styles.filtros}>
   
        <ul>
-       <p className={styles.p}>Ordena por nombre </p>
+       {/* <p className={styles.p}>Ordena por nombre </p> */}
         <select className= {styles.select} onChange={e=>handleOrder(e)}>
-        <option value= "all" disabled={true}>Todos</option> 
+          
+        <option value= "Ordena por nombre">Ordena por nombre</option>
           <option value="asc">A-Z</option>
           <option value= "desc">Z-A</option>
           </select>
@@ -132,35 +166,39 @@ function handleRating (e){
 
 
    <ul>
-   <p className={styles.p}>Ordena por rating </p>
+   {/* <p className={styles.p}>Ordena por rating </p> */}
   <select className= {styles.select} onChange={e=>handleRating(e)}>
-  <option value="all" disabled={true} >Rating</option>
+  <option value="Ordena por rating" >Ordena por rating</option>
   <option value="ascR">0-5</option>
   <option value= "descR">5-0</option>
-        </select>
-        </ul>
+
+    </select>
+  </ul>
       
  
 
 
       <ul>
         
-        <p className={styles.p}>Filtro creado/existente </p>
+        {/* <p className={styles.p}>Filtro creado/existente </p> */}
          
           <select className= {styles.select} onChange={e=>handleFilterCreated(e)}> 
-          <option value= "all" disabled={false}>Todos</option>
-          <option value= "exis">Existente</option>
-          <option value= "creado">Nuevo</option>
+          
+          <option value= "all" >Creado/Existente</option>
+       
+          <option value= "exis" >Existente</option>
+          <option value= "creado" >Nuevo</option>
+
           </select>
         </ul>
 
         <ul>
         
-        <p className={styles.p}>Filtro por Genero </p>
+        {/* <p className={styles.p}>Filtro por Genero </p> */}
 
           <select className= {styles.select} onChange={e=>handleFilterGenres(e)}> 
 
-          <option value= "all" disabled={false}>Generos</option>
+          <option value= "all" >Generos</option>
           
           {allGenres.map((g)=>(
           <option key ={g.id} value={g.name} label={g.name} >
@@ -185,20 +223,22 @@ function handleRating (e){
 
  
 {/* aca no vas a hacer el mapeo de allGames=> sino de la porcion de pokemons por pagina */}
-<div className={styles.contenedor}>
+<div className={styles.cardHome}>
+
  {currentGamesPage.length?
  currentGamesPage.map((el) =>{
     return(  
     <div key = {el.id}>                   
-    <Link className={styles.link} to={"/home/" + el.id}>
+    <Link className={styles.linkCard} to={"/home/" + el.id}>
     <div >
    <Card
    
-   className= {styles.cards}
+  //  className= {styles.cards}
   
    name ={el.name} 
    genres= {el.createdInDb? el.genres.map((g)=> g.name) : el.genres} 
    image= {el.image}
+   rating= {el.rating}
 
     /> 
     </div>
@@ -208,13 +248,10 @@ function handleRating (e){
   
   :  
 
-
-<div className={styles.img}>
-
-<img src={"https://i.imgur.com/llF5iyg.gif?noredirect"} alt="GAME NOT FOUND" width= "200px" height="200px" ></img>
+<div className='parent'>
+<img src={"https://media4.giphy.com/media/ehUXZUHL1jph7TcelU/200w.webp?cid=790b7611xw35q1itdildkzwk99yuwtoc6zbo7mm3fwbashzi&rid=200w.webp&ct=s"} alt="GAME NOT FOUND" className={styles.cardImg} ></img>
 
 </div>
-
  
  } 
 </div>

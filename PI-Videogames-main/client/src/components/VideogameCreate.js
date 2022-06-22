@@ -14,6 +14,7 @@ const divStyle = {
   backgroundPosition: "100% 100%",
   width: "100vw",
   height: "100vh",
+  
 };
 
 
@@ -158,16 +159,17 @@ function handleDelete(el){
 
   return (
     <div style={divStyle}>
+  
+  
+  <div className={styles.body}>
 
 
   <NavLink to = "/home" exact >
-      <button className={styles.btn}>
-        HOME
-      </button>
+    <img src = {"https://media3.giphy.com/media/FtTfX6RsPPExhjuymq/200w.webp?cid=790b7611xrpo8f8qrk4vpjooq62pednxs5al5vaa2muy2lv4&rid=200w.webp&ct=s"} alt ="Img not found" className={styles.btn}/>
   </NavLink>
   
   <h1 className={styles.h1}> CREA TU VIDEOJUEGO</h1>
-  <form  onSubmit={(e) => handleSubmit(e)}>
+ <form className = {styles.contenedor} onSubmit={(e) => handleSubmit(e)}>
 
 <div className = {styles.form}>
 <div className={styles.input} >
@@ -219,7 +221,8 @@ className={errors.name && styles.danger}
   <div>
   <label>RATING: </label>
   </div>
-    <input type="text"
+    <input 
+    type="number"
     name="rating"
     value={input.rating}
     onChange={handleChange}/>
@@ -293,6 +296,7 @@ className={errors.name && styles.danger}
    </div>
   </form>
 
+  </div>
   </div>
 
   )

@@ -4,6 +4,8 @@ import Landing from './components/Landing';
 import { Route } from 'react-router-dom';
 import VideogameCreate from './components/VideogameCreate';
 import VideogameDetail from './components/VideogameDetail';
+import Profile from './components/Profile';
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
     <Route path="/home" exact component={Home}/>
     <Route path="/videogames" exact component={VideogameCreate}/>
     <Route path="/home/:id" exact component={VideogameDetail}/>
+  
 
     </div>
   );

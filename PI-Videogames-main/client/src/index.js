@@ -7,12 +7,21 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import store from "../src/store";
 import { BrowserRouter } from 'react-router-dom';
+import {Auth0Provider} from "@auth0/auth0-react"
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+      <Auth0Provider  
+      domain= "dev-0ugs9570.us.auth0.com" 
+      clientId = "3hPnhIlpgERx7128560eXvMKnCNNqumY" 
+      redirectUri={window.location.origin}
+      audience="https://dev-0ugs9570.us.auth0.com/api/v2/"
+    scope="read:current_user update:current_user_metadata"
+  >
       <App />
+      </Auth0Provider>
       </BrowserRouter>
       </Provider>
     </React.StrictMode>,

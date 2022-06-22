@@ -1,12 +1,15 @@
 .search{
-    font-size: 10px;
-    width: 180px;
-    height: 25px;
     border-radius: 10px;
     border: 1.8px solid ;
     cursor: pointer ;
     margin-top: 0.5%; 
     color: black;
+    font-family: "Press Start 2P", cursive; 
+    font-size: 10px ;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1.8px solid 
 
 }
 
@@ -29,15 +32,17 @@
     /* color:rgb(103, 46, 127);  */
     font-size: 10px;
     width: 70px;
-    height: 30px;
-    border-radius: 10px;
+    height: 40px;
+    border-radius: 20px;
     border: 1.8px solid ;
+    font-family: "Press Start 2P", cursive;
 
     /* border-style: double; */
     cursor: pointer ;
 }
 
 
-.boton:hover{
+
+.button:hover{
     color: rgb(214, 181, 214);
 }

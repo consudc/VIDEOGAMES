@@ -1,4 +1,4 @@
-import {GET_GAME_BYNAME, GET_GENRE, GET_GAME_DETAIL, GET_VIDEOGAME, ORDER_NAME, ORDER_RATING, FILTER_CREATED, FILTER_GENRE, GET_PLATFORMS} from "./types"
+import {GET_GAME_BYNAME, GET_GENRE, GET_GAME_DETAIL, GET_VIDEOGAME, ORDER_NAME, ORDER_RATING, FILTER_CREATED, FILTER_GENRE, GET_PLATFORMS, DELETE_GAMES} from "./types"
 
 import axios from "axios"
 
@@ -43,7 +43,7 @@ export function getPlatforms (){
 export function createVideogames (payload){
     return async function (dispatch){
         var json = await axios.post("http://localhost:3001/videogame", payload)
-        // console.log(json.data)
+        console.log(json.data)
         return json
 
     }
@@ -117,6 +117,27 @@ export function getDetailVideogame(id){
         } catch(error){ 
 
             // console.log(error)
+        }
+}
+
+}
+
+
+export function deleteVideo(id){
+    return async function (dispatch){
+        try{
+        var json = await axios.delete(`http://localhost:3001/videogame/${id}`);
+
+    console.log(json.data)
+        
+            return dispatch({
+            type : DELETE_GAMES,
+            payload : json.data
+        })
+        
+        } catch(error){ 
+
+             console.log(error)
         }
 }
 

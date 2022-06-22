@@ -1,12 +1,7 @@
-/* .divStyle{
-    background-image: url("../GIFS/fondo5.png");
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    position:fixed;
-    background-position: 100% 100%;
-} */
-
+.body{
+    font-family: "Press Start 2P", cursive; 
+    font-size: 12px
+  };
 
 .h1{
 
@@ -16,22 +11,19 @@
     font-size: 45px;
     cursor: pointer ;
 
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Press Start 2P", cursive;
     
     /* -webkit-text-stroke: 1.5px black; */
     color: #fff;
         margin-top: 2%; 
-        margin-bottom: 3%;
+        margin-bottom: 5%;
         text-shadow:
             0 0 5px rgba(0,178,255,1),
             0 0 10px rgba(0,178,255,1),
-            /* 0 0 20px rgba(0,178,255,1),
-            0 0 40px rgba(38,104,127,1), */
-            /* 0 0 80px rgba(38,104,127,1),
-            0 0 90px rgba(38,104,127,1), */
             0 0 100px rgba(38,104,127,1),
             0 0 140px rgba(38,104,127,1),
             0 0 180px rgba(38,104,127,1);
+            
     
     }
     .h1:hover {
@@ -40,29 +32,33 @@
     
 
 .btn{
-    color:white;
+    /* color:white;
     margin-top: 2%; 
     text-shadow:
         0 0 5px rgb(0, 191, 255),
        0 0 10px rgb(0, 191, 255),
-        /* 0 0 20px rgb(255, 0, 242),
-        0 0 40px rgb(238, 0, 255),
-        0 0 80px rgb(238, 0, 255),
-        0 0 90px rgb(238, 0, 255),
-        0 0 100px rgb(238, 0, 255), */
+
         0 0 140px rgb(47, 0, 255),
         0 0 180px rgb(47, 0, 255);
    
      background-color: rgb(60, 17, 60);
-    /* color:rgb(103, 46, 127);  */
+ 
     font-size: 17px;
     width: 100px;
     height: 40px;
     border-radius: 15px;
-    border: 1px solid rgb(188, 50, 188) ;
+    border: 1px solid rgb(188, 50, 188) ; */
 
-    /* border-style: double; */
     cursor: pointer ;
+
+        width: 100px;
+        height: 100px;
+        background-size: 100%;
+        /* margin-top: 10px;
+        margin-left: 50px; */
+        margin-inline-end: auto;
+        ;
+
 }
 
 
@@ -77,15 +73,18 @@
     grid-template-columns: 50% 50%; */
 /* } */
 /* .input{
-    display: flex; */
-    /* grid-template-columns: 50% 50%; */
-    /* margin-left: 50%;*/
-    /* margin-right: 40%; 
-    text-align: center;
-    justify-content: right;
+    display: flex;  */
+    /* margin-left: 50%;
+    margin-right: 40%;  */
+    /* text-align: center;
+    justify-content: center;
 } */
 
 /* .select{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
    font-size: 5px;
     font-family:'Times New Roman', Times, serif
 } */
@@ -102,8 +101,8 @@
 }
 
 .option{
-    font-size: 15px;
-    font-family:'Times New Roman', Times, serif
+    font-size: 10px;
+    font-family: "Press Start 2P", cursive; 
 }
 /*
 .label{
@@ -115,8 +114,9 @@
 
 .crear{
     color: #fff;
+    font-family: "Press Start 2P", cursive; 
     
-    margin-top: 2.5%; 
+    margin-top: 5%;
     text-shadow:
         0 0 5px rgb(255, 0, 242),
         0 0 10px rgb(255, 0, 242),
@@ -130,14 +130,19 @@
    
      background-color:rgb(77, 27, 77);
     /* color:rgb(103, 46, 127);  */
-    font-size: 25px;
-    width: 150px;
-    height: 60px;
+    font-size: 20px;
+    width: 130px;
+    height: 55px;
     border-radius: 5px;
     border: 1px solid white ;
 
+
     /* border-style: double; */
     cursor: pointer ;
+    
+   
+    margin-inline-end: auto;
+ 
 }
 
 
@@ -148,36 +153,43 @@
 
 
 
-.contenedor {
+/* .contenedor {
     background-color: rgba(240, 240, 240, 0.136);
     border-radius: 10px 10px 10px 10px;
     
-}
+} */
 
 .palabra {
     color: black;
     font-family: 'Rubik', sans-serif;
+    font-family: "Press Start 2P", cursive
 }
 
 .form {
     display: flex;
-    justify-content: center;
+    justify-content:space-around;
     flex-direction: column;
-    align-items: center;
-    height: 380px;
-    width: 380px;
+    align-items:center;
+    height: 500px;
+    width: 500px;
     background-color: rgba(169, 142, 180, 0.308);
     border: 1px solid aliceblue;
     border-radius: 14px;
     transition: transform 0.15s;
+    margin-left: 10px; 
+    font-size: 20px;
     margin: 0 auto;
-    margin-top: 2%;
+    
+   
+   
+    margin-top: 3%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .form:hover {
     cursor: pointer;
     transform: scale(1.0);
-    filter: drop-shadow(0 0 20px rgba(252, 252, 252, 0.742));
+    filter: drop-shadow(0 0 20px rgba(252, 252, 252, 0.361));
 }
 
 .tipos {

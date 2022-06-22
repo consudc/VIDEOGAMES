@@ -1,63 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 .body{
-    background-image: url("../GIFS/fondogamer.png");
-    /* background-image: url("https://previews.123rf.com/images/nightblossom66/nightblossom661403/nightblossom66140300001/26903984-vector-de-fondo-con-un-tema-de-los-videojuegos-no-es-un-patr%C3%B3n.jpg"); */
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    position:fixed;
-    background-position: 100% 100%
+    background-color: black;
+     background-size: 100%;
 }
 
-.header{
-    display: grid;
-    grid-template-columns: 15% 25% 25% 35%;
-    margin-top: 5px;
 
+@keyframes movimiento {
+    from{
+        background-position: left;
+    }
+ 
+    to {
+       background-position:  right;
+    }
+ }
+
+
+.cardHome{
+    display: grid;
+    padding: 50px 90px;
+    margin: 20px;
+    align-content: space-between;
+    -ms-grid-column-align: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 50px;
+    justify-content: center;
+    align-content: center;
+}
+
+
+
+.cardImg {
+ width: 500px;
+ height:500px;
+ margin-right: 150px;
+ margin-left: 400px ;
+ margin-top: 0%;
+
+} 
+
+
+
+.header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.3s;
+    animation: move 2s;
+    
 }
 
 
 .h1{
     text-align: center;
     color: whitesmoke;
-    font-size: 30px;
+    font-size: 40px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     cursor: pointer ;
     -webkit-text-stroke: 1.5px black;
+    
 }
 .p{
     font-size: 15px;
 }
 
-.img{
-        width: 150px;
-        height: 150px;    
-      }
+
 .btn{
-        color: #fff;
-        
-        margin-top: 0.5%; 
-        text-shadow:
-            0 0 5px rgb(187, 0, 255),
-            0 0 10px rgb(187, 0, 255),
-            /* 0 0 20px rgb(255, 0, 242), */
-            /* 0 0 40px rgb(238, 0, 255),
-            0 0 80px rgb(238, 0, 255),
-            0 0 90px rgb(238, 0, 255), */
-            0 0 100px rgb(238, 0, 255),
-            0 0 140px rgb(238, 0, 255),
-            0 0 180px rgb(238, 0, 255);
-       
-         background-color:rgb(93, 42, 132);
-        /* color:rgb(103, 46, 127);  */
-        font-size: 13px;
-        width: 90px;
-        height: 40px;
-        border-radius: 10px;
-        border: 1.8px solid ;
-    
-        /* border-style: double; */
-        cursor: pointer ;
-    }
+    width: 100px;
+    height: 100px;
+    background-size: 100%; 
+    margin-top: 10px;
+
+}
     
     
     .btn:hover{
@@ -66,6 +85,7 @@
 
 .btnInput{
     color: #fff;
+    
         
     margin-top: 0.5%; 
     text-shadow:
@@ -80,64 +100,45 @@
         0 0 180px rgb(238, 0, 255);
    
      background-color:rgb(43, 3, 43);
-    /* color:rgb(103, 46, 127);  */
-    font-size: 15px;
+    font-size: 13px;
     width: 200px;
     height: 40px;
     border-radius: 10px;
     border: 1.8px solid ;
 
-    /* border-style: double; */
     cursor: pointer ;
+    font-family: "Press Start 2P", cursive; 
+  
+
 }
 
-
-.btn:hover{
+.btnInput:hover{
     color: rgb(214, 181, 214);
+}
+
+.filtros{
+
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.3s;
+    animation: move 2s;
+     margin-top: 5px; 
+     margin-bottom: 1px; 
 }
 
 .select{
     font-size: 15px;
-    border-radius: 5px;
-    height: 25px;
+    border-radius: 10px;
+    height: 30px;
     margin-top: 1px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 
 }
-    
-
-
-.contenedor{
-    /* background-color: aliceblue;
-    width:100%  */
-    
-    display: grid;  
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows:repeat(3, 1fr) ;
-    grid-column-gap:10px;
-    grid-row-gap: 5px;
-    margin-left: 10px; 
-    margin-right: 10px; 
-    margin-bottom: 2%;
-    
    
-}
-.img{
-    margin-left: 200%;
-    margin-top: 26%;
 
-
-}
-
-.filtros{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 50% 50%;
-    height: 100px;
-
-    /* margin-top: 5px; */   
-}
 .link{
     text-decoration: none;
 }
-
-
