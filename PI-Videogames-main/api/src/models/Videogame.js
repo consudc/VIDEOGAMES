@@ -26,7 +26,6 @@ module.exports = (sequelize) => {
 
     image:{
       type: DataTypes.STRING,
-      defaultValue: "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2020/02/17105257/game-ratings-featured.jpg",
       allowNull: true,
     },
   

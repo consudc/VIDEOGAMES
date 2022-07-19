@@ -95,9 +95,7 @@ export function getVideogameName(name){
          .catch(error => 
             
             alert("No se encontro en video game"))
-            
-        
-        }
+         }
 }
 
 

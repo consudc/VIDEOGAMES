@@ -108,7 +108,7 @@ try{
      
               const newGame =  await Videogame.create({
                     name,
-                    image: image,
+                    image: image? image : "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2020/02/17105257/game-ratings-featured.jpg",
                     description,
                     rating,
                     createdInDb,
@@ -187,7 +187,7 @@ const videoGameDb = await Videogame.findByPk(id,
      ]
      }
          )
-     // console.log(videoGameDb)
+   
      res.status(200).send(videoGameDb);
 }
 
